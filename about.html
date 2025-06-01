@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <title>Ajay Kumar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #fff;
+      color: #333333;
+
+      scroll-behavior: smooth;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #f9f9f9;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 8%;
+      z-index: 1001;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo p {
+      font-size: 1rem;
+      margin: 0;
+      color: #555;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      width: 30px;
+      height: 25px;
+      gap: 5px;
+      z-index: 1002;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 100%;
+      background: #333333;
+      border-radius: 3px;
+      transition: 0.4s;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333333;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #29bdb1;
+    }
+
+    section {
+      padding: 1rem 0;
+      max-width: 1440px;
+      margin: auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      font-weight: 300;
+      background: #f1f1f1;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background: #333;
+      color: #fff;
+      border-radius: 5px;
+      margin-top: 1rem;
+      text-decoration: none;
+    }
+
+    .projects {
+      width: 100%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 2rem;
+      padding-top: 2rem;
+    }
+
+
+    .intro-section {
+      display: flex;
+      flex-direction: row;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+
+      max-width: 1440px;
+      margin: auto;
+    }
+
+    .intro-image {
+      flex: 1 1 50%;
+      min-width: 300px;
+    }
+
+    .intro-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .intro-text {
+      flex: 1 1 50%;
+      padding: 6rem 3rem 4rem 3rem;
+
+    }
+
+    .intro-text h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+
+    .intro-text p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .intro-text a {
+      color: #29bdb1;
+      text-decoration: none;
+    }
+
+    .intro-text a:hover {
+      text-decoration: underline;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .button-group a {
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border: 2px solid #29bdb1;
+      color: #29bdb1;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .button-group a:hover {
+      background: #29bdb1;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 5%;
+      }
+
+      .logo {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .intro-section {
+        flex-direction: column;
+      }
+
+      .intro-text {
+        padding: 1rem;
+        margin-top: 4rem;
+      }
+
+      .intro-image {
+        max-height: 400px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 60%;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+        padding: 4rem 2rem;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      .nav-overlay.active {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav-overlay" id="nav-overlay" onclick="closeMenu()"></div>
+
+  <nav>
+    <div class="logo">
+      <a href="#"><img src="../asset/general/ak_logo.png" alt="Logo" /></a>
+      <p>user experience designer</p>
+    </div>
+    <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="/index.html#projects" onclick="closeMenu()">Work</a>
+      <a href="/about.html" style="color: #29bdb1" onclick="closeMenu()">About</a>
+    </div>
+  </nav>
+  <!--
+  <header>
+    <h1>Hi, I'm Ajay Kumar</h1>
+    <p>Creating meaningful experiences through design.</p>
+  </header>
+  -->
+
+  <div class="intro-section">
+    <div class="intro-image">
+      <img src="./asset/general/profile_img.png" alt="Ajay Image" />
+      <!-- Replace with your image path -->
+    </div>
+    <div class="intro-text">
+      <h1>Hello, I'm AJAY</h1>
+      <p>
+        Welcome to my student portfolio! If you’re searching for recent work,
+        check out:
+        <a href="https://www.uxajay.com" target="_blank">https://www.uxajay.com</a>
+      </p>
+      <p>
+        I'm a UX Designer with a major in Product Design. I love to create
+        meaningful and intuitive experiences through design. I love to explore
+        and come up with innovative ideas. I'm really enthusiastic about each
+        and every step that goes into paving a way for amazing products that
+        help and improve people's lives, creating desirable experiences. It is
+        absolutely satisfying when I get to design things, solve problems,
+        learn new strategies, build upon ideas, have them turn to reality, and
+        also contribute to a detail-oriented approach. I'm a highly motivated
+        person and a quick learner so there's always room for more.
+      </p>
+      <p>
+        A fun fact? I'm someone who can really evoke emotions with his design
+        aesthetics and highly vivid imaginations.
+      </p>
+
+      <div class="button-group">
+        <a href="mailto:ajaybind0607@gmail.com" target="_blank">Email</a>
+        <a href="https://www.linkedin.com/in/ajay-kumar-bind/" target="_blank">LinkedIn</a>
+        <a href="https://yourdomain.com/resume.docx" target="_blank">Student Resume</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025. All Rights Reserved to Ajay Kumar</footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      const menu = document.getElementById("menu-toggle");
+      const overlay = document.getElementById("nav-overlay");
+      nav.classList.toggle("active");
+      menu.classList.toggle("active");
+      overlay.classList.toggle("active");
+    }
+
+    function closeMenu() {
+      const nav = document.getElementById("nav-links");
+      const menu = document.getElementById("menu-toggle");
+      const overlay = document.getElementById("nav-overlay");
+      nav.classList.remove("active");
+      menu.classList.remove("active");
+      overlay.classList.remove("active");
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <title>Ajay Kumar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #fff;
+      color: #333333;
+
+      scroll-behavior: smooth;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #f9f9f9;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 8%;
+      z-index: 1001;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo p {
+      font-size: 1rem;
+      margin: 0;
+      color: #555;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      width: 30px;
+      height: 25px;
+      gap: 5px;
+      z-index: 1002;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 100%;
+      background: #333333;
+      border-radius: 3px;
+      transition: 0.4s;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333333;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #29bdb1;
+    }
+
+    section {
+      padding: 1rem 0;
+      max-width: 1440px;
+      margin: auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      font-weight: 300;
+      background: #f1f1f1;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background: #333;
+      color: #fff;
+      border-radius: 5px;
+      margin-top: 1rem;
+      text-decoration: none;
+    }
+
+    .projects {
+      width: 100%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 2rem;
+      padding-top: 2rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      background: #f9f9f9;
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      background: #ffffff;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .project-content h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .project-content p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .project-card:hover h3 {
+      color: #29bdb1;
+    }
+
+    .welcome-section {
+      background: url("../asset/general/about_bg_full.png") no-repeat center center/cover;
+      padding: 14rem 0 0 0rem;
+      display: flex;
+      width: 100vw;
+      /* Ensure full viewport width */
+      justify-content: center;
+      align-items: center;
+      margin-left: 0;
+      margin-right: 0;
+      box-sizing: border-box;
+      max-width: none;
+      position: relative;
+      overflow: visible;
+    }
+
+    .welcome-container {
+      background: #ffff;
+      padding: 2rem 4rem;
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+      border-bottom: .8px solid #9e9e9e;
+      position: relative;
+      z-index: 2;
+      margin-bottom: -8rem;
+      /* this creates the 6rem overflow below */
+
+    }
+
+    .welcome-container h2 {
+      font-size: 2rem;
+      line-height: 1.2;
+      color: #222;
+      margin-bottom: 1rem;
+      text-align: left;
+
+    }
+
+    .welcome-container p {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+
+      .welcome-container {
+        padding: 1rem 1.5rem;
+        width: 80%;
+        text-align: center;
+      }
+
+      .project-card img {
+        max-width: 500px;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      nav {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: .5rem 5%;
+      }
+
+      .logo {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 60%;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+        padding: 4rem 2rem;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2rem;
+      }
+
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      .nav-overlay.active {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav-overlay" id="nav-overlay" onclick="closeMenu()"></div>
+
+  <nav>
+    <div class="logo">
+      <a href="#"><img src="../asset/general/ak_logo.png" alt="Logo" /></a>
+      <p>user experience designer</p>
+    </div>
+    <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="/index.html#projects" onclick="closeMenu()">Work</a>
+      <a href="/about.html" onclick="closeMenu()">About</a>
+    </div>
+  </nav>
+  <!--
+  <header>
+    <h1>Hi, I'm Ajay Kumar</h1>
+    <p>Creating meaningful experiences through design.</p>
+  </header>
+  
+
+  <section id="about" style="padding: 6rem 0 2rem 0; padding: 0 8%;">
+    <h2>About Me</h2>
+    <p>I am a passionate user experience designer with a focus on intuitive design, usability, and problem-solving. I
+      love crafting delightful experiences that make people's lives easier.</p>
+  </section>
+ 
+  <section id="about" style="background: #f9f9f9; padding: 5rem 8%;">
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+      <img src="../asset/general/profile.png" alt="Ajay Kumar" style="width: 250px; border-radius: 16px; flex-shrink: 0;" />
+      <div style="flex: 1;">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #333;">About Me</h2>
+        <p style="color: #555; font-size: 1.1rem;">
+          I’m a <strong style="color: #29BDB1;">UX Designer</strong> with a passion for solving complex problems using
+          <strong>elegant</strong> and <strong>intuitive</strong> solutions. My approach combines <strong>user research</strong>,
+          <strong>strategic thinking</strong>, and <strong>collaborative design</strong> to create experiences that matter.
+        </p>
+      </div>
+    </div>
+  </section>
+   -->
+
+  <section class="welcome-section">
+    <div class="welcome-container">
+      <h2>Welcome to My Portfolio!</h2>
+      <p>
+        Every piece in my portfolio represents a journey of growth and
+        learning, underscoring my capacity to face any creative endeavor with grit.
+      </p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 style="font-size: 2rem; margin-top: 10rem;">Web Application Projects</h2>
+    <div class="projects">
+      <a href="ukhidashboard.html" class="project-card">
+        <img src="../asset/project/thumnail_ukhi_dashboard.png" alt="Ukhi Dashboard" />
+        <div class="project-content">
+          <h3>Ukhi Dashboard</h3>
+        </div>
+      </a>
+      <a href="ukhi.html" class="project-card">
+        <img src="../asset/project/thumbnail_ukhi.png" alt="Ukhi" />
+        <div class="project-content">
+          <h3>Ukhi</h3>
+        </div>
+      </a>
+      <a href="vms.html" class="project-card">
+        <img src="../asset/project/thumnail_vms.png" alt="VMS" />
+        <div class="project-content">
+          <h3>VMS</h3>
+        </div>
+      </a>
+      <a href="changemaker.html" class="project-card">
+        <img src="../asset/project/thumbnail_changemaker.png" alt="Changemaker" />
+        <div class="project-content">
+          <h3>Changemaker</h3>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 style="font-size: 2rem">Andriod Apps</h2>
+    <div class="projects">
+      <a href="ukhidashboard.html" class="project-card">
+        <img src="../asset/project/thumnail_ukhi_dashboard.png" alt="Ukhi Dashboard" />
+        <div class="project-content">
+          <h3>Ukhi Dashboard</h3>
+        </div>
+      </a>
+      <a href="ukhi.html" class="project-card">
+        <img src="../asset/project/thumbnail_ukhi.png" alt="Ukhi" />
+        <div class="project-content">
+          <h3>Ukhi</h3>
+        </div>
+      </a>
+      <a href="vms.html" class="project-card">
+        <img src="../asset/project/thumnail_vms.png" alt="VMS" />
+        <div class="project-content">
+          <h3>VMS</h3>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 style="font-size: 2rem">iOS Apps</h2>
+    <div class="projects">
+      <a href="ukhidashboard.html" class="project-card">
+        <img src="../asset/project/thumnail_ukhi_dashboard.png" alt="Ukhi Dashboard" />
+        <div class="project-content">
+          <h3>Ukhi Dashboard</h3>
+        </div>
+      </a>
+      <a href="ukhi.html" class="project-card">
+        <img src="../asset/project/thumbnail_ukhi.png" alt="Ukhi" />
+        <div class="project-content">
+          <h3>Ukhi</h3>
+        </div>
+      </a>
+      <a href="vms.html" class="project-card">
+        <img src="../asset/project/thumnail_vms.png" alt="VMS" />
+        <div class="project-content">
+          <h3>VMS</h3>
+        </div>
+      </a>
+      <a href="changemaker.html" class="project-card">
+        <img src="../asset/project/thumbnail_changemaker.png" alt="Changemaker" />
+        <div class="project-content">
+          <h3>Changemaker</h3>
+        </div>
+      </a>
+    </div>
+  </section>
+  <footer>&copy; 2025. All Rights Reserved to Ajay Kumar</footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      const menu = document.getElementById("menu-toggle");
+      const overlay = document.getElementById("nav-overlay");
+      nav.classList.toggle("active");
+      menu.classList.toggle("active");
+      overlay.classList.toggle("active");
+    }
+
+    function closeMenu() {
+      const nav = document.getElementById("nav-links");
+      const menu = document.getElementById("menu-toggle");
+      const overlay = document.getElementById("nav-overlay");
+      nav.classList.remove("active");
+      menu.classList.remove("active");
+      overlay.classList.remove("active");
+    }
+  </script>
+</body>
+
+</html>

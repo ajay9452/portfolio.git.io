@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"/>
+
+    <title>Ajay Kumar</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: #fff;
+        color: #333333;
+
+        scroll-behavior: smooth;
+      }
+
+      header {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #f9f9f9;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      header p {
+        font-size: 1.2rem;
+        color: #666;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 8%;
+        z-index: 1001;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .logo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.5rem;
+      }
+
+      .logo img {
+        height: 40px;
+      }
+
+      .logo p {
+        font-size: 1rem;
+        margin: 0;
+        color: #555;
+      }
+
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        cursor: pointer;
+        width: 30px;
+        height: 25px;
+        gap: 5px;
+        z-index: 1002;
+      }
+
+      .menu-toggle span {
+        height: 3px;
+        width: 100%;
+        background: #333333;
+        border-radius: 3px;
+        transition: 0.4s;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333333;
+        font-weight: 400;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #29bdb1;
+      }
+
+      section {
+        padding: 1rem 0;
+        max-width: 1440px;
+        margin: auto;
+         padding: 1rem 0;
+      }
+
+
+
+      .section-1 {
+      display: flex;
+      align-items: center;
+      margin-top: 3rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      background: #fff;
+      padding: 30px;
+    }
+
+        .section-title-1 h1{
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #222;
+      padding-right: 20px;
+    }
+
+    .section-image-1 {
+      max-width: 1440px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .section-description-1 {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    
+    ul.section-list-1 {
+      padding-left: 20px;
+      color: #444;
+    }
+
+    ul.section-list-1 li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+     
+   .section-3 {
+      display: flex;
+      align-items: center;
+      margin-top: 3rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      background: #fff;
+    
+    
+    }
+
+    .video-section {
+    max-width: 1440px;
+    margin: 40px auto;
+    padding: 20px;
+  
+  }
+
+  .video-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #222;
+  }
+
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+
+      footer {
+        text-align: center;
+        padding: 2rem 0;
+        font-weight: 300;
+        background: #f1f1f1;
+        font-size: 0.9rem;
+        color: #777;
+      }
+
+      a.button {
+        display: inline-block;
+        padding: 0.7rem 1.5rem;
+        background: #333;
+        color: #fff;
+        border-radius: 5px;
+        margin-top: 1rem;
+        text-decoration: none;
+      }
+
+      
+
+     
+    
+
+     
+      
+
+     
+    
+   
+
+
+
+   
+
+
+      @media (max-width: 768px) {
+        
+   
+        
+        nav {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          padding: .5rem 5%;
+        }
+
+        .logo {
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+        }
+         
+      
+        .menu-toggle {
+          display: flex;
+        }
+
+        .nav-overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 1000;
+        }
+
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          background: #fff;
+          position: fixed;
+          top: 0;
+          right: 0;
+          height: 100vh;
+          width: 60%;
+          box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+          padding: 4rem 2rem;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 2rem;
+        }
+
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .nav-overlay.active {
+          display: block;
+        }
+
+       .section-2 {
+        padding: 20px;
+      }
+
+      .section-title-1 h2{
+        font-size: 1.5rem;
+      }
+      
+
+      .section-description-1 p, .section-title-2 {
+        font-size: 1rem;
+      }
+
+      .section-image-1 img {
+     max-width: 500px;
+    width: 100%;
+    height: auto;
+    }
+
+    
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav-overlay" id="nav-overlay" onclick="closeMenu()"></div>
+
+    <nav>
+      <div class="logo">
+        <a href="#"><img src="../asset/general/ak_logo.png" alt="Logo" /></a>
+        <p>user experience designer</p>
+      </div>
+      <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links" id="nav-links">
+        <a href="/index.html#projects"  onclick="closeMenu()">Work</a>
+        <a href="/about.html" onclick="closeMenu()">About</a>
+      </div>
+    </nav>
+    
+
+
+    
+    <section class="section-1">
+    <div class="section-title-1">
+      <h1>Discover Amazing Places</h1></div>
+    <div class="section-image-1">
+      <img src="../asset/project/project_img_1.png" alt="introimage" />
+    </div>
+  </section>
+
+  
+  <section class="section-2">
+    <div class="section-title-1">
+      <h2>My Role Ajay</h2></div>
+    <div class="section-description-1">
+     <p>I work as a UI/UX Designer, where I create designs based on data and requirements provided by the Product Manager. This includes research 
+      insights, wireframes, and continuous design modifications to meet
+       different client needs.</p> 
+    </div>
+
+    <div class="section-title-2">Key Contributions:</div>
+    <ul class="section-list-1">
+      <li>Volunteer Management: Adding, removing, migrating volunteers, changing roles, assigning projects, and retaining volunteers</li>
+      <li>Volunteer Onboarding UI</li>
+      <li>Volunteer Profile Section (including eight tabs)</li>
+      <li>Project Onboarding and Screening</li>
+      <li>Pricing Module & management over the time period</li>
+      <li>Notification Handling</li>
+      <li>Project Creation and Project Listing UI</li>
+    </ul>
+
+    <div class="section-title-2">Project Overview:</div>
+     <div class="section-description-1">
+     <p>This project is a SaaS-based application designed for a Volunteer Management System (VMS). It provides a complete solution for managing the entire lifecycle of volunteers and volunteering projects.</p> 
+    </div>
+    <div class="section-description-1" style="font-style: italic;">
+     <p><strong>Note:</strong> Later, I was also responsible for fully converting the VMS (Volunteer Management System) into a mobile-responsive version.</p> 
+    </div>
+
+
+    <section class="section-3">
+    <div class="section-title-1">
+      <h1>Design Process:</h1></div>
+    <div class="section-image-1">
+      <img src="../asset/project/project_img_1.png" alt="introimage" />
+    </div>
+    <div class="section-description-1">
+     <p>As a UI/UX Designer, I worked with two types of data shared with me: low-fidelity wireframes or low-fidelity flowcharts in Excel sheets.</p> 
+    </div>
+    <ul class="section-list-1">
+      <li>If I received a low-fidelity wireframe, I directly started designing the high-fidelity version.</li>
+      <li>If it was a low-fidelity flowchart in Excel, I first created rough wireframes—either on paper or using digital tools—before moving forward to the high-fidelity design stage.</li>
+    </ul>
+    <div class="section-description-1">
+     <p>
+    I also prepared A/B testing designs to evaluate and improve the user 
+    experience, which helped in making more informed design decisions for 
+    better usability.</p> 
+    </div>
+
+    <div class="section-description-1" style="font-style: italic; background-color: #F5F5F5; padding: 0 20px;">
+     <p><strong>Note:</strong> Later, I was also responsible for fully converting the VMS (Volunteer Management System) into a mobile-responsive version.</p> 
+    </div>
+     
+  </section>
+    
+
+  <section class="video-section">
+  <div class="video-title">Let walk through my project</div>
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/WBI5atoH4Oo?si=keNLW_nKRYpmZn_6" 
+      title="YouTube video"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+ 
+    <footer>&copy; 2025. All Rights Reserved to Ajay Kumar</footer>
+
+    <script>
+      function toggleMenu() {
+        const nav = document.getElementById("nav-links");
+        const menu = document.getElementById("menu-toggle");
+        const overlay = document.getElementById("nav-overlay");
+        nav.classList.toggle("active");
+        menu.classList.toggle("active");
+        overlay.classList.toggle("active");
+      }
+
+      function closeMenu() {
+        const nav = document.getElementById("nav-links");
+        const menu = document.getElementById("menu-toggle");
+        const overlay = document.getElementById("nav-overlay");
+        nav.classList.remove("active");
+        menu.classList.remove("active");
+        overlay.classList.remove("active");
+      }
+    </script>
+  </body>
+</html>
